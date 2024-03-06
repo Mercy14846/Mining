@@ -46,6 +46,8 @@ var addBandsAndMask = function(image) {
   return imageWithBands.addBands(mining_mask);
 };
 
+var bands = ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B8A', 'B9', 'B10', 'B11', 'B12']
+
 // Map the function over the Sentinel-2 image collection
 var sentinel2_with_mask = sentinel2.map(addBandsAndMask);
 
