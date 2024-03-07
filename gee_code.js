@@ -30,12 +30,12 @@ var sentinel2 = ee.ImageCollection("COPERNICUS/S2")
                   .filterDate('2023-01-01', '2023-12-31');  // Set the date range
 
 // Function to add Sentinel-2 bands and mining mask to an image
-var addBandsAndMask = function(image) {
+var addBandsAndMask = function(sentinel2) {
   // Select Sentinel-2 bands of interest
   var bands = ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B8A', 'B9', 'B10', 'B11', 'B12'];
   
   // Add Sentinel-2 bands
-  var imageWithBands = image.select(bands).rename(bands);
+  var imageWithBands = sentinel2.select(bands).rename(bands);
   
   // Add the mining mask
   var mining_mask = mining_footprints_sa.reduceToImage({
